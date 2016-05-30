@@ -59,6 +59,15 @@
   height: calc-em($pixels);
 }
 
+
+
+// This mixin creates a striped background-size
+@mixin striped-bg($rotation:0,$bg-color: $brand-accent,$stripe-color: $brand-primary,$stripe-size: 15, $bg-stripe-size: $stripe-size*2){
+  background-color: $bg-color;
+  background-image: repeating-linear-gradient($rotation+deg, transparent, transparent $stripe-size+px, $stripe-color $stripe-size+px, $stripe-color $bg-stripe-size+px);
+}
+
+
 @mixin retinize($file, $type, $width, $height) {
 	background-image: url($image-path + $file + '.' + $type);
 
