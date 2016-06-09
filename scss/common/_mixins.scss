@@ -67,6 +67,14 @@
   background-image: repeating-linear-gradient($rotation+deg, transparent, transparent $stripe-size+px, $stripe-color $stripe-size+px, $stripe-color $bg-stripe-size+px);
 }
 
+// This mixin creates a horizontal rule (hr)
+@mixin rule($width:80,$height:1,$color:#000){
+  width: percentage($width/100);
+  color: $color;
+  background-color: $color;
+  height: $height+px;
+}
+
 
 @mixin retinize($file, $type, $width, $height) {
 	background-image: url($image-path + $file + '.' + $type);
