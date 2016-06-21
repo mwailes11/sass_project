@@ -1,0 +1,7 @@
+$browser-context: 16;
+
+
+// This function will convert pixels to ems
+@function calc-em($pixles, $context: $browser-context){
+  @return ($pixles / $context) * 1em;
+}
