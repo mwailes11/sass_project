@@ -48,6 +48,14 @@
 	color: $background-color;
 }
 
+@mixin show-me {
+	display:inherit;
+	visibility:visible;
+	font-size:inherit;
+	line-height:inherit;
+	color:inherit;	
+}
+
 @mixin background-size($width, $height) {
 	-webkit-background-size: $width $height;
 	-moz-background-size: $width $height;
