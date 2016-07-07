@@ -53,7 +53,7 @@
 	visibility:visible;
 	font-size:inherit;
 	line-height:inherit;
-	color:inherit;	
+	color:inherit;
 }
 
 @mixin background-size($width, $height) {
@@ -66,6 +66,49 @@
   width: calc-em($pixels);
   height: calc-em($pixels);
 }
+
+// Font setter through abstracted labels
+@mixin font($fontLabel,$weightLabel:normal,$styleLabel:normal) {
+    $fonts: (body: (stack: 'Arial', weights:(normal: 400, bold: 600) )) !default;
+    $fontWeight: 400;
+    $fontStack: 'None';
+		$fontStyle: 'normal';
+
+    // Match given type with fontstacks
+    @each $fontKey, $font in $fonts {
+        @if $fontLabel == $fontKey {
+            // get stack and weights
+            @each $elem, $value in $font {
+                @if $elem == 'family' {
+                    $fontStack: $value;
+                }
+
+								@if $elem == 'styles' {
+                    @each $styleKey, $style in $value {
+                        @if $styleKey == $styleLabel {
+                            $fontStyle: $style;
+                        }
+                    }
+                }
+
+                @if $elem == 'weights' {
+                    @each $weightKey, $weight in $value {
+                        @if $weightKey == $weightLabel {
+                            $fontWeight: $weight;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // set CSS
+    font-family: $fontStack;
+		font-style:  $fontStyle;
+    font-weight: $fontWeight;
+
+}// end font()
+
 
 
 
