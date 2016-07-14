@@ -67,6 +67,14 @@
   height: calc-em($pixels);
 }
 
+// This mxixin allows form placeholders to be styled
+@mixin placeholder {
+	&.placeholder { @content; }
+	&:-moz-placeholder { @content; }
+ 	&::-moz-placeholder { @content; }
+ 	&::-webkit-input-placeholder { @content; }
+}
+
 // Font setter through abstracted labels
 @mixin font($fontLabel,$weightLabel:normal,$styleLabel:normal) {
     $fonts: (body: (stack: 'Arial', weights:(normal: 400, bold: 600) )) !default;
